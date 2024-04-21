@@ -13,6 +13,29 @@ function ProjectHero() {
         setCurrent(value);
     }
 
+
+    //al click delle freccette cambio il progetto
+    document.onkeydown = (e) => {
+
+        e = e || window.event;
+
+        if (e.keyCode == '38') {
+            // up arrow
+        }
+        else if (e.keyCode == '40') {
+            // down arrow
+        }
+        else if (e.keyCode == '37') {
+            // left arrow
+            handleLeftClick();
+        }
+        else if (e.keyCode == '39') {
+            // right arrow
+            handleRightClick()
+        }
+
+    }
+
     const handleLeftClick = () => {
         if (current > 0)
             changeCurrentProject(current - 1);
