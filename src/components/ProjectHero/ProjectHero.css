@@ -92,10 +92,68 @@
     width: calc(100% - 20px - 40px);
     padding: 0 20px;
     height: 8vh;
-    background-color: aqua;
     display: flex;
     align-items: center;
-    justify-content: space-around;
+    justify-content: space-between;
+}
+
+.ProjectHero .events .next-left,
+.ProjectHero .events .next-right {
+    height: 7vh;
+    width: 7vh;
+    border-radius: 50%;
+
+    background-color: var(--black);
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.ProjectHero .events .next-left {
+    background-image: url("../../assets/svg/left-arrow.svg");
+}
+
+.ProjectHero .events .next-right {
+    background-image: url("../../assets/svg/right-arrow.svg");
+}
+
+.ProjectHero .events .search .submit:hover,
+.ProjectHero .events .next-left:hover,
+.ProjectHero .events .next-right:hover {
+    box-shadow: -3px 3px 6px var(--light-black);
+}
+
+.ProjectHero .events .search {
+    height: 100%;
+    width: 80%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.ProjectHero .events .search .submit,
+.ProjectHero .events .search .search-bar {
+    all: unset;
+
+    height: 6vh;
+    width: 80%;
+    background-color: var(--light-black);
+    border: solid 1px var(--black);
+    border-radius: 10px;
+}
+
+.ProjectHero .events .search .search-bar {
+    width: 80%;
+    padding-left: 6px;
+    font-size: 32px;
+}
+
+.ProjectHero .events .search .submit {
+    width: 6vh;
+    background-image: url("../../assets/svg/loupe.svg");
+    background-size: 5vh;
+    background-position: center;
+    background-repeat: no-repeat;
 }
 
 

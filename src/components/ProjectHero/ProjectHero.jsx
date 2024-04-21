@@ -3,9 +3,38 @@ import "../../.vars.css"
 import "./ProjectHero.css"
 import { useState } from "react";
 
+
 function ProjectHero() {
-    const projects = useSelector((state) => state.projects.value);
+    const projects = [...useSelector((state) => state.projects.value)].reverse();
     const [current, setCurrent] = useState(0);
+    const [searchBarValue, setSearchBarValue] = useState("");
+
+    const changeCurrentProject = (value) => {
+        setCurrent(value);
+    }
+
+    const handleLeftClick = () => {
+        if (current > 0)
+            changeCurrentProject(current - 1);
+    }
+    const handleRightClick = () => {
+        if (current < projects.length - 1)
+            changeCurrentProject(current + 1);
+    }
+
+    const handleSearch = (e) => {
+        e.preventDefault();
+
+        if (searchBarValue !== "") {
+            const p = projects.filter(pr => pr.name.toLowerCase().includes(searchBarValue.toLowerCase()))
+            if (p[0])
+                setCurrent(projects.length - 1 - p[0].id);
+            // else
+            //     alert("Il progetto " + searchBarValue + " NON esiste.");
+        }
+
+        setSearchBarValue("");
+    }
 
     return (
         <div className="ProjectHero">
@@ -22,12 +51,12 @@ function ProjectHero() {
             </div>
 
             <div className="events">
-                <div className="next-left"></div>
+                <div className="next-left" onClick={handleLeftClick} />
                 <form action="" className="search">
-                    <input type="text" name="" id="" className="search-bar" />
-                    <input type="submit" value="" className="submit" />
+                    <input type="text" value={searchBarValue} onChange={(e) => setSearchBarValue(e.target.value)} className="search-bar" placeholder="Search..." />
+                    <input type="submit" value="" className="submit" onClick={handleSearch} />
                 </form>
-                <div className="next-right"></div>
+                <div className="next-right" onClick={handleRightClick} />
             </div>
         </div>
     )
