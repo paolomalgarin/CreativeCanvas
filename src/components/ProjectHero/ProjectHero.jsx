@@ -8,9 +8,11 @@ function ProjectHero() {
     const projects = [...useSelector((state) => state.projects.value)].reverse();
     const [current, setCurrent] = useState(0);
     const [searchBarValue, setSearchBarValue] = useState("");
+    const [slide, setSlide] = useState(0);
 
     const changeCurrentProject = (value) => {
         setCurrent(value);
+        setSlide(1);
     }
 
 
@@ -61,7 +63,8 @@ function ProjectHero() {
 
     return (
         <div className="ProjectHero">
-            <div className="info">
+            {/* slide è un attributo che indica se deve essere animato o no il componente (viene animato con changeCurrentProject) */}
+            <div className="info" slide={slide} onAnimationEnd={() => setSlide(0)}>
                 <a href={projects[current].link} className="site-img-container" target="_blank"><img src={projects[current].imgURL} alt="" className="site-img" /></a>
                 <div className="data">
                     <h2 className="site-name">{projects[current].name}</h2>

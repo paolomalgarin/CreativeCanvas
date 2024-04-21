@@ -180,6 +180,11 @@
 }
 
 
+.ProjectHero .info[slide='1'] {
+    animation: wobbleProject .3s 1;
+}
+
+
 @keyframes spawnProjects {
     from {
         transform: translate(0, -100vw);
@@ -187,6 +192,29 @@
 
     to {
         transform: translate(0, 0);
+    }
+}
+
+@keyframes wobbleProject {
+    0% {
+        filter: blur(40px);
+    }
+
+    25% {
+        transform: rotate(9deg);
+    }
+
+    50% {
+        transform: rotate(-18deg);
+    }
+
+    75% {
+        transform: rotate(3deg);
+        filter: blur(0px);
+    }
+
+    100% {
+        transform: rotate(0deg);
     }
 }
 
