@@ -106,6 +106,7 @@
     background-color: var(--black);
     background-repeat: no-repeat;
     background-position: center;
+    transition: all .2s ease-in-out;
 }
 
 .ProjectHero .events .next-left {
@@ -116,10 +117,16 @@
     background-image: url("../../assets/svg/right-arrow.svg");
 }
 
-.ProjectHero .events .search .submit:hover,
 .ProjectHero .events .next-left:hover,
 .ProjectHero .events .next-right:hover {
+    transform: scale(1.1);
     box-shadow: -3px 3px 6px var(--light-black);
+}
+
+.ProjectHero .events .next-left:active,
+.ProjectHero .events .next-right:active {
+    transform: scale(1.02);
+    box-shadow: none;
 }
 
 .ProjectHero .events .search {
@@ -154,6 +161,15 @@
     background-size: 5vh;
     background-position: center;
     background-repeat: no-repeat;
+    transition: box-shadow .2s ease;
+}
+
+.ProjectHero .events .search .submit:hover {
+    box-shadow: -3px 3px 6px 2px var(--light-black);
+}
+
+.ProjectHero .events .search .submit:active {
+    box-shadow: -3px 3px 3px var(--light-black);
 }
 
 
