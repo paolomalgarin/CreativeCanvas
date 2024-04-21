@@ -7,14 +7,14 @@ import homeIcon from "../../assets/svg/home-icon.svg"
 import projectsIcon from "../../assets/svg/projects-icon.svg"
 import contactsIcon from "../../assets/svg/contacts-icon.svg"
 import copyrightIcon from "../../assets/svg/copyright-icon.svg"
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 
 // ------------------------- FUNZIONE -------------------------
 function Navbar() {
 
     const [isCopyrightShown, setCopyrightShown] = useState(false);
-    const [isMenuShown, setMenuShown] = useState(false);
+    const [isMenuShown, setMenuShown] = useState(true);
 
     const showHideCopyright = (e) => {
         e.stopPropagation();
@@ -25,6 +25,10 @@ function Navbar() {
         setMenuShown(!isMenuShown);
         setCopyrightShown(false);
     }
+
+    useEffect(() => {
+        showHideMenu();
+    }, []);
 
     return (
         <div className="Navbar">
