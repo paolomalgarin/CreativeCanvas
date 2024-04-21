@@ -5,7 +5,7 @@ import ContactHero from '../../components/ContactHero/ContactHero'
 
 
 // ------------------------- FUNZIONE -------------------------
-function App() {
+function About() {
 
   return (
     <>
@@ -16,4 +16,4 @@ function App() {
   )
 }
 
-export default App
+export default About;

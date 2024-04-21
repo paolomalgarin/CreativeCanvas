@@ -57,7 +57,7 @@ function Navbar() {
             {/* altro copyright */}
             <div className={`${isCopyrightShown ? "" : "hideCopyright"} copyright-overlay`} onClick={showHideCopyright}>
                 <div className="copyright-box">
-                    <h2>©COPYRIGHT PAOLO MALGARIN.</h2>
+                    <h2>©2024 PAOLO MALGARIN.</h2>
                     <h3>Tutti i diritti riservati.</h3>
                 </div>
             </div>

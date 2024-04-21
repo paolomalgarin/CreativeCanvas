@@ -1,0 +1,122 @@
+.ProjectHero {
+    width: calc(100vw - 81px);
+    height: 100vh;
+    padding-left: 81px;
+    padding-top: 0;
+    top: 0;
+    position: absolute;
+
+    background: url("../../assets/svg/web-bgedition.svg");
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    animation: spawnProjects .3s ease;
+}
+
+.ProjectHero .info {
+    /* 5vh è il padding top */
+    height: calc(85vh - 5vh);
+    /* 40px è il padding left */
+    width: calc(100% - 20px - 40px);
+    padding-top: 5vh;
+    padding-left: 40px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-content: flex-start;
+    gap: 10px;
+}
+
+.ProjectHero .info .site-img-container {
+    width: 55%;
+    height: fit-content;
+}
+
+.ProjectHero .info .site-img-container .site-img {
+    width: calc(100% - 8px);
+    height: fit-content;
+    object-fit: contain;
+    border: solid 4px var(--white);
+    cursor: pointer;
+}
+
+.ProjectHero .info .data {
+    width: calc(45% - 20px);
+    height: fit-content;
+    max-height: 60%;
+}
+
+.ProjectHero .info .data .site-name {
+    text-align: center;
+    font-size: 55px;
+    margin: 10px 0;
+    font-weight: 700;
+}
+
+.ProjectHero .info .data .site-decription {
+    padding: 0 15px;
+    font-size: 32px;
+    color: var(--light-gray);
+    font-weight: 400;
+}
+
+.ProjectHero .info .extra {
+    width: 55%;
+    font-size: 40px;
+    font-weight: 400;
+    padding-left: 10px;
+}
+
+.ProjectHero .info .extra .date {
+    margin: 0;
+    padding: 7px 0;
+}
+
+.ProjectHero .info .extra .link {
+    color: var(--azure);
+    cursor: pointer;
+}
+
+
+
+/* eventi */
+
+.ProjectHero .events {
+    /* 40px è il padding laterale */
+    width: calc(100% - 20px - 40px);
+    padding: 0 20px;
+    height: 8vh;
+    background-color: aqua;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+
+@keyframes spawnProjects {
+    from {
+        transform: translate(0, -100vw);
+    }
+
+    to {
+        transform: translate(0, 0);
+    }
+}
+
+/* -------------------------------------------------------------------------------------------------> mobile gui */
+@media only screen and (max-width: 750px) {
+
+    .ProjectHero {
+        width: 100%;
+        height: calc(100vh - 81px);
+        padding-left: 0;
+        padding-top: 81px;
+        top: 0;
+    }
+}
