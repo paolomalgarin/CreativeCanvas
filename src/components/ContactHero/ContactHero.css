@@ -1,0 +1,85 @@
+.ContactHero {
+    width: 100%;
+    height: 100vh;
+    padding-left: 81px;
+    padding-top: 0;
+    top: 0;
+    position: absolute;
+    background: url("../../assets/svg/at-bgedition.svg");
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    animation: spawnContact .3s ease;
+}
+
+.ContactHero a .contact {
+    text-decoration: none;
+    text-align: left;
+    width: max-content;
+    margin: 0;
+    animation: spawnContact .3s ease .1s;
+    animation-fill-mode: both;
+    padding: 0 10px;
+    font-size: 45px;
+    font-weight: 700;
+    -webkit-text-stroke: thin var(--black);
+    color: var(--white);
+}
+
+.ContactHero a {
+    display: flex;
+    align-items: center;
+    flex-direction: row-reverse;
+    padding: 10px 0;
+    justify-content: flex-end;
+    text-decoration: none;
+}
+
+.ContactHero a .contact-logo {
+    height: 80px;
+    width: 80px;
+    margin-right: 10px;
+    transition: all .3s ease-in-out;
+}
+
+.ContactHero a .contact-logo:hover,
+.ContactHero a .contact:hover + .contact-logo {
+    transform: scale(1.1);
+}
+
+@keyframes spawnContact {
+    from {
+        transform: translate(0, 100vw);
+    }
+
+    to {
+        transform: translate(0, 0);
+    }
+}
+
+/* -------------------------------------------------------------------------------------------------> mobile gui */
+@media only screen and (max-width: 750px) {
+
+    .ContactHero {
+        width: 100%;
+        height: calc(100vh - 81px);
+        padding-left: 0;
+        padding-top: 81px;
+    }
+    
+    .ContactHero a .contact {
+        font-size: 20px;
+        font-weight: 700;
+        -webkit-text-stroke: thin var(--black);
+        color: var(--white);
+    }
+    
+    .ContactHero a .contact-logo {
+        height: 60px;
+        width: 60px;
+    }
+}

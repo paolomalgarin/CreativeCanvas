@@ -1,0 +1,25 @@
+#error-page {
+    font-size: 2rem;
+    text-align: center;
+    color: #eee;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100vh;
+}
+
+#error-page h1 {
+    font-size: 7rem;
+    margin: 0;
+}
+
+/* desktop gui */
+@media (min-width: 1281px) {
+    #error-page {
+        font-size: 3rem;
+    }
+
+    #error-page h1 {
+        font-size: 10rem;
+    }
+}

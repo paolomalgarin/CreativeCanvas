@@ -1,0 +1,331 @@
+/* body {
+    padding-left: 87px;
+} */
+
+.Navbar {
+    background-color: var(--black);
+    width: 79px;
+    margin: 4px;
+    height: calc(100vh - 10px - 30px);
+    /* gli ultimi 30 sono il padding*/
+    border-radius: 20px;
+    padding: 15px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+}
+
+.Navbar .hamburger {
+    display: none;
+}
+
+.Navbar .menu {
+    /* 120px è l'altezza del menu diviso 2 */
+    height: calc(50% + 120px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    overflow: hidden;
+    transition: height .3s ease-in-out, background-color .3s ease-in-out;
+}
+
+.Navbar .actions {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.Navbar .actions li {
+    padding: 15px 0;
+}
+
+.Navbar .actions li:hover ::before {
+    content: "";
+    display: block;
+    position: absolute;
+    z-index: -1;
+    height: 40px;
+    width: 180px;
+    background-color: var(--light-black);
+    padding: 10px;
+    padding-left: 50px;
+    transform: translate(-15px, -5px);
+    border-radius: 20px;
+
+    /* content (testo) */
+    text-align: right;
+    padding-right: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--white);
+    font-weight: 400;
+    font-size: 24px;
+}
+
+/* parte con le scritte */
+.Navbar .actions #home-icon:hover ::before {
+    content: "HOME";
+    /* apposta per l'icona della home che da problemi */
+    transform: translate(-15px, -10px);
+}
+
+.Navbar .actions #projects-icon:hover ::before {
+    content: "PROGETTI";
+}
+
+.Navbar .actions #contacts-icon:hover ::before {
+    content: "CONTATTI";
+}
+
+/* --------------------------------------------------- */
+
+.Navbar .logo {
+    width: 70px;
+    position: relative;
+    left: -2px;
+}
+
+.Navbar .action-icon {
+    width: 40px;
+}
+
+.Navbar .copyright {
+    width: 40px;
+    cursor: pointer;
+}
+
+
+/* copyright box */
+.Navbar .copyright-overlay {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    z-index: -2;
+    top: 0;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.Navbar .copyright-overlay .copyright-box {
+    background-color: var(--black);
+    height: 90%;
+    width: calc(90% - 81px);
+    padding: 10px;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    cursor: pointer;
+
+    animation: slideRightIn .4s ease;
+    animation-fill-mode: both;
+}
+
+/* h2 e h3 */
+.Navbar .copyright-overlay .copyright-box>* {
+    margin: 0;
+    font-size: 36px;
+    font-weight: 400;
+    text-align: center;
+}
+
+
+.Navbar .xCover {
+    display: none;
+}
+
+.Navbar .hideCopyright {
+    animation: slideLeftOut .25s ease;
+    animation-fill-mode: both;
+}
+
+
+
+@keyframes slideRightIn {
+
+    from {
+        transform: translateX(-100vw);
+    }
+
+    to {
+        transform: translateX(40px);
+    }
+}
+
+@keyframes slideLeftOut {
+
+    0% {
+        transform: translateX(40px);
+    }
+
+    99% {
+        display: "";
+    }
+
+    100% {
+        transform: translateX(-100vw);
+        display: none;
+    }
+}
+
+
+
+
+/* -------------------------------------------------------------------------------------------------> mobile gui */
+@media only screen and (max-width: 750px) {
+
+    /* html, body {
+        padding-left: 0;
+        padding-top: 87px;
+        min-height: calc(100vh - 87px) !important;
+    } */
+
+    .Navbar {
+        height: 79px;
+        margin: 4px;
+        width: calc(100vw - 8px - 13px);
+        /* gli ultimi 20 sono il padding*/
+        padding: 0 10px;
+        padding-left: 3px;
+        flex-direction: row-reverse;
+    }
+
+    .Navbar .hamburger {
+        display: block;
+        height: 75px;
+        width: 76px;
+        border-radius: 20px;
+        border-top-right-radius: 0;
+        border-bottom-right-radius: 0;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        background-color: var(--black);
+    }
+
+    /* x */
+    .Navbar .hamburger .x {
+        display: block;
+        height: 4px;
+        width: 60%;
+        background-color: transparent;
+    }
+
+    .Navbar .hamburger .x::before {
+        top: 0;
+        transform: rotate(-45deg);
+    }
+
+    .Navbar .hamburger .x::after {
+        top: -100%;
+        transform: rotate(45deg);
+    }
+
+    /* hamburger */
+    .Navbar .hamburger .line {
+        display: block;
+        height: 4px;
+        width: 60%;
+        background-color: var(--white);
+        border-radius: 20px;
+    }
+
+    .Navbar .hamburger .x::before,
+    .Navbar .hamburger .x::after,
+    .Navbar .hamburger .line::before,
+    .Navbar .hamburger .line::after {
+        content: "";
+        display: block;
+        height: 100%;
+        width: 100%;
+        background-color: var(--white);
+        border-radius: 20px;
+        position: relative;
+    }
+
+    .Navbar .hamburger .line::before {
+        top: calc(-100% - 8px);
+        /* 8px = gap */
+    }
+
+    .Navbar .hamburger .line::after {
+        top: 8px;
+        /* 8px = gap */
+    }
+
+    /* altro */
+
+    .Navbar .actions li:hover ::before {
+        display: none;
+    }
+
+    .Navbar .hideMenu {
+        height: 0 !important;
+        padding: 0 !important;
+    }
+
+    .Navbar .menu {
+        position: fixed;
+        background-color: var(--light-black);
+        width: 79px;
+        margin: 4px;
+        height: calc(100vh - 10px - 30px);
+        border-radius: 20px;
+        padding: 15px 0;
+        top: 0;
+        left: 0;
+        z-index: -2;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .Navbar .xCover {
+        display: block;
+        height: 79px;
+        width: 79px;
+        position: relative;
+        top: -15px;
+        border-radius: 19px;
+        border-top-right-radius: 0;
+        border-bottom-right-radius: 0;
+        background-color: var(--black);
+    }
+
+    .Navbar .copyright-overlay .copyright-box {
+        background-color: var(--black);
+        height: calc(90% - 81px);
+        width: calc(90% - 81px);
+        padding: 10px;
+        border-radius: 20px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        position: relative;
+        top: 40px;
+
+        animation: slideRightIn .4s ease;
+        animation-fill-mode: both;
+    }
+
+    /* h2 e h3 */
+    .Navbar .copyright-overlay .copyright-box>* {
+        margin: 0;
+        font-size: 18px;
+        font-weight: 400;
+        text-align: center;
+    }
+
+    .Navbar .hideCopyright {
+        display: none;
+    }
+}

@@ -1,0 +1,30 @@
+body {
+    overflow-x: hidden;
+}
+
+.CursorShadow {
+    display: none;
+}
+
+
+/* -------------------------------------------------------------------------------------------------> desktop gui */
+@media only screen and (min-width: 1365px) {
+    * {
+        cursor: url("../../assets/svg/cursor.svg"), auto;
+    }
+
+    .CursorShadow {
+        display: block;
+        position: absolute;
+        z-index: -1;
+        width: 500px;
+        height: 500px;
+        border-radius: 50%;
+        filter: blur(40px);
+        /* bg */
+        background: -moz-radial-gradient(circle, rgba(90, 99, 202, 1) 0%, rgba(57, 58, 67, 1) 100%);
+        background: -webkit-radial-gradient(circle, rgba(90, 99, 202, 1) 0%, rgba(57, 58, 67, 1) 100%);
+        background: radial-gradient(circle, rgba(90, 99, 202, 1) 0%, rgba(57, 58, 67, 1) 100%);
+        filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#5a63ca", endColorstr="#393a43", GradientType=1);
+    }
+}
