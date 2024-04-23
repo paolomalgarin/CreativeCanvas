@@ -1,7 +1,8 @@
 import { useSelector } from "react-redux";
 import "../../.vars.css"
 import "./ProjectHero.css"
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import usePreloadImage from "../../redux/hooks/usePreloadImage";
 
 
 function ProjectHero() {
@@ -15,6 +16,9 @@ function ProjectHero() {
         setSlide(1);
     }
 
+    // fa il preload delle immagini quando cambio progetto per avere le immagini pronte e non dare poblemi durante lo switch
+    usePreloadImage(projects[current + 1]?.imgURL);  //il ? è come un if(projects[current + 1]) => (se esiste projects[current + 1])
+    usePreloadImage(projects[current - 1]?.imgURL);
 
     //al click delle freccette cambio il progetto
     document.onkeydown = (e) => {
