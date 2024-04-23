@@ -52,7 +52,7 @@ function ProjectHero() {
     usePreloadImage(projects[current - 1]?.imgURL);
 
     //allo swipe cambio progetto
-    useSwipeDetector({ rightSwipe: handleRightClick, leftSwipe: handleLeftClick });
+    useSwipeDetector({ onSwipeRight: handleRightClick, onSwipeLeft: handleLeftClick });
 
     //al click delle freccette cambio il progetto
     document.onkeydown = (e) => {
@@ -77,7 +77,9 @@ function ProjectHero() {
     }
 
     return (
-        <div className="ProjectHero">
+        <div className="ProjectHero" data-swipe-threshold="20"
+            data-swipe-timeout="500"
+            data-swipe-ignore="false">
             {/* slide è un attributo che indica se deve essere animato o no il componente (viene animato con changeCurrentProject) */}
             <div className="info" slide={slide} onAnimationEnd={() => setSlide(0)}>
                 <a href={projects[current].link} className="site-img-container" target="_blank"><img src={projects[current].imgURL} alt="" className="site-img" /></a>
