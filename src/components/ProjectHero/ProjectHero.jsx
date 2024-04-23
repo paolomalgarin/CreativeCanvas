@@ -3,6 +3,7 @@ import "../../.vars.css"
 import "./ProjectHero.css"
 import { useEffect, useState } from "react";
 import usePreloadImage from "../../redux/hooks/usePreloadImage";
+import useSwipeDetector from "../../redux/hooks/useSwipeDetector";
 
 
 function ProjectHero() {
@@ -11,36 +12,8 @@ function ProjectHero() {
     const [searchBarValue, setSearchBarValue] = useState("");
     const [slide, setSlide] = useState(0);
 
-    const changeCurrentProject = (value) => {
-        setCurrent(value);
-        setSlide(1);
-    }
 
-    // fa il preload delle immagini quando cambio progetto per avere le immagini pronte e non dare poblemi durante lo switch
-    usePreloadImage(projects[current + 1]?.imgURL);  //il ? è come un if(projects[current + 1]) => (se esiste projects[current + 1])
-    usePreloadImage(projects[current - 1]?.imgURL);
-
-    //al click delle freccette cambio il progetto
-    document.onkeydown = (e) => {
-
-        e = e || window.event;
-
-        if (e.keyCode == '38') {
-            // up arrow
-        }
-        else if (e.keyCode == '40') {
-            // down arrow
-        }
-        else if (e.keyCode == '37') {
-            // left arrow
-            handleLeftClick();
-        }
-        else if (e.keyCode == '39') {
-            // right arrow
-            handleRightClick()
-        }
-
-    }
+    // -------------------------------------------------- HANDLE EVENTI --------------------------------------------------
 
     const handleLeftClick = () => {
         if (current > 0)
@@ -63,6 +36,44 @@ function ProjectHero() {
         }
 
         setSearchBarValue("");
+    }
+
+
+
+    // -------------------------------------------------- ALTRO --------------------------------------------------
+
+    const changeCurrentProject = (value) => {
+        setCurrent(value);
+        setSlide(1);
+    }
+
+    // fa il preload delle immagini quando cambio progetto per avere le immagini pronte e non dare poblemi durante lo switch
+    usePreloadImage(projects[current + 1]?.imgURL);  //il ? è come un if(projects[current + 1]) => (se esiste projects[current + 1])
+    usePreloadImage(projects[current - 1]?.imgURL);
+
+    //allo swipe cambio progetto
+    useSwipeDetector({ rightSwipe: handleRightClick, leftSwipe: handleLeftClick });
+
+    //al click delle freccette cambio il progetto
+    document.onkeydown = (e) => {
+
+        e = e || window.event;
+
+        if (e.keyCode == '38') {
+            // up arrow
+        }
+        else if (e.keyCode == '40') {
+            // down arrow
+        }
+        else if (e.keyCode == '37') {
+            // left arrow
+            handleLeftClick();
+        }
+        else if (e.keyCode == '39') {
+            // right arrow
+            handleRightClick();
+        }
+
     }
 
     return (
