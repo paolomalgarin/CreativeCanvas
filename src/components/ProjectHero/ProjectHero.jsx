@@ -52,7 +52,12 @@ function ProjectHero() {
     usePreloadImage(projects[current - 1]?.imgURL);
 
     //allo swipe cambio progetto
-    useSwipeDetector({ onSwipeRight: handleRightClick, onSwipeLeft: handleLeftClick });
+    useSwipeDetector({
+        onSwipeRight: handleLeftClick,  //inverto per i gesti
+        onSwipeLeft: handleRightClick,
+        onSwipeUp: () => { },
+        onSwipeDown: () => { }
+    });
 
     //al click delle freccette cambio il progetto
     document.onkeydown = (e) => {
