@@ -37,7 +37,7 @@ function useSwipeDetector({ onSwipeLeft, onSwipeRight, onSwipeUp, onSwipeDown })
         }
     };
 
-    // console.log("IsTouchDevice: " + isTouchDevice());
+    console.log("IsTouchDevice: " + isTouchDevice());
 
     //per avere le posizioni esatte di mousetouch
     const getXY = (e) => {
@@ -45,66 +45,68 @@ function useSwipeDetector({ onSwipeLeft, onSwipeRight, onSwipeUp, onSwipeDown })
         mouseY = (!isTouchDevice() ? e.pageY : e.touches[0].pageY);
     }
 
-    isTouchDevice(); // ?? https://www.youtube.com/watch?v=FuU0CMvLunE
+    if (isTouchDevice()) { // ?? https://www.youtube.com/watch?v=FuU0CMvLunE
 
-    //swipe start
-    touchArea.addEventListener(events[deviceType].down, (event) => {
-        isSwiped = true;
-        //ottengo le posizioni di start
-        getXY(event);
-        initialX = mouseX;
-        initialY = mouseY;
-    });
-
-    //mousemove / touchmove
-    touchArea.addEventListener(events[deviceType].move, (event) => {
-        const minSwipeDistance = 20;
-
-        if (!isTouchDevice())
-            event.preventDefault();
-        if (isSwiped) {
+        //swipe start
+        touchArea.addEventListener(events[deviceType].down, (event) => {
+            isSwiped = true;
+            //ottengo le posizioni di start
             getXY(event);
-            let diffX = mouseX - initialX;
-            let diffY = mouseY - initialY;
-            if (Math.abs(diffY) > Math.abs(diffX)) {  //controllo che tipo di swipe è
-                if (diffY > minSwipeDistance) {
-                    // ----------------------------------> swipe down !
-                    // console.log("swiped down");
-                    onSwipeDown();
-                }
-                else if (diffY < minSwipeDistance) {
-                    // ----------------------------------> swipe up !
-                    // console.log("swiped up");
-                    onSwipeUp();
-                }
-            } else {
+            initialX = mouseX;
+            initialY = mouseY;
+        });
 
-                if (diffX > minSwipeDistance) {
-                    // ----------------------------------> swipe right !
-                    // console.log("swiped right");
-                    onSwipeRight();
-                }
-                else if (diffX < minSwipeDistance) {
-                    // ----------------------------------> swipe left !
-                    // console.log("swiped left");
-                    onSwipeLeft();
+        //mousemove / touchmove
+        touchArea.addEventListener(events[deviceType].move, (event) => {
+            const minSwipeDistance = 20;
+
+            if (!isTouchDevice())
+                event.preventDefault();
+            if (isSwiped) {
+                getXY(event);
+                let diffX = mouseX - initialX;
+                let diffY = mouseY - initialY;
+                if (Math.abs(diffY) > Math.abs(diffX)) {  //controllo che tipo di swipe è
+                    if (diffY > minSwipeDistance) {
+                        // ----------------------------------> swipe down !
+                        // console.log("swiped down");
+                        onSwipeDown();
+                    }
+                    else if (diffY < minSwipeDistance) {
+                        // ----------------------------------> swipe up !
+                        // console.log("swiped up");
+                        onSwipeUp();
+                    }
+                } else {
+
+                    if (diffX > minSwipeDistance) {
+                        // ----------------------------------> swipe right !
+                        // console.log("swiped right");
+                        onSwipeRight();
+                    }
+                    else if (diffX < minSwipeDistance) {
+                        // ----------------------------------> swipe left !
+                        // console.log("swiped left");
+                        onSwipeLeft();
+                    }
                 }
             }
+
+        });
+
+
+        //stop drawing (tolgo isSwiped)
+        touchArea.addEventListener(events[deviceType].up, () => {
+            isSwiped = false;
+        });
+
+        touchArea.addEventListener("mouseleave", () => {
+            isSwiped = false;
+        });
+
+        Window.onload = () => {
+            isSwiped = false;
         }
-    });
-
-
-    //stop drawing (tolgo isSwiped)
-    touchArea.addEventListener(events[deviceType].up, () => {
-        isSwiped = false;
-    });
-
-    touchArea.addEventListener("mouseleave", () => {
-        isSwiped = false;
-    });
-
-    Window.onload = () => {
-        isSwiped = false;
     }
 }
 
