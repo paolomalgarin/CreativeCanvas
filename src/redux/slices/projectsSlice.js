@@ -1,6 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";  //import necessario per le slices
 import EdilServizi from "../../assets/sites-imgs/EdilServizi.png"
 import Boomba from "../../assets/sites-imgs/Boomba.png"
+import Portfolio from "../../assets/sites-imgs/Portfolio.png"
 
 export const projectsSlice = createSlice({
     name: "projects",
@@ -21,6 +22,14 @@ export const projectsSlice = createSlice({
                 imgURL: Boomba,
                 year: 2024,
                 description: "Boomba è il sito di un progetto scolastico a cui ho lavorato. Si è trattato di ricreare il gioco campo minato e nel sito ho riportato la documentazione ed una spiegazione degli algoritmi che ci sono dietro.",
+            },
+            {
+                id: 2,
+                name: "My portfolio",
+                link: "https://paolomalgarin.netlify.app",
+                imgURL: Portfolio,
+                year: 2024,
+                description: "Questo è il mio portfolio.",
             },
         ]
     },
