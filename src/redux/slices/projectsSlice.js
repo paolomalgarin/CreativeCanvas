@@ -29,7 +29,7 @@ export const projectsSlice = createSlice({
                 link: "https://paolomalgarin.netlify.app",
                 imgURL: Portfolio,
                 year: 2024,
-                description: "Questo è il mio portfolio.",
+                description: "Questo è il mio portfolio, dove mostro una varietà di progetti che ho realizzato nel corso degli anni. Attraverso un design pulito e una navigazione intuitiva, i visitatori possono esplorare il mio lavoro e conoscere meglio le mie competenze e il mio approccio creativo.",
             },
         ]
     },
