@@ -6,7 +6,7 @@ function Hero() {
     return (
         <div className="Hero">
             <h1>PAOLO MALGARIN</h1>
-            <h3>Informatico e web-developer amatoriale pronto a dare un'esperienza professionale</h3>
+            <h3>Autodidatta per natura, esperto per scelta: Il tuo web developer per un'esperienza utente impeccabile</h3>
         </div>
     )
 }
