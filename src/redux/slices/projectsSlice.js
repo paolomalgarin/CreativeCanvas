@@ -25,7 +25,7 @@ export const projectsSlice = createSlice({
             },
             {
                 id: 2,
-                name: "My portfolio",
+                name: "Creative Canvas",
                 link: "https://paolomalgarin.netlify.app",
                 imgURL: Portfolio,
                 year: 2024,
