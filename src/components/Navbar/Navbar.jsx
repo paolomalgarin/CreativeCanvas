@@ -30,6 +30,7 @@ function Navbar() {
         showHideMenu();
     }, []);
 
+
     return (
         <div className="Navbar">
             <img src={logo} alt="logo" className='logo' />
@@ -42,7 +43,7 @@ function Navbar() {
                 <div className="xCover"></div>
 
                 {/* links alle pagine */}
-                <ul className="actions">
+                <ul className="actions" onAnimationEnd={() => { const actions = document.querySelector('.actions'); if(actions) (isMenuShown) ? document.querySelector('.actions').style.display = "" : document.querySelector('.actions').style.display = "none" }}>
                     <li id='home-icon'><Link to={"/"}>
                         <img className='action-icon' src={homeIcon} alt="" />
                     </Link></li>
