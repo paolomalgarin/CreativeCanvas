@@ -45,13 +45,13 @@ function Navbar() {
                 {/* links alle pagine */}
                 <ul className="actions" onAnimationEnd={() => { const actions = document.querySelector('.actions'); if(actions) (isMenuShown) ? document.querySelector('.actions').style.display = "" : document.querySelector('.actions').style.display = "none" }}>
                     <li id='home-icon'><Link to={"/"}>
-                        <img className='action-icon' src={homeIcon} alt="" />
+                        <img className='action-icon' src={homeIcon} alt="home" />
                     </Link></li>
                     <li id='projects-icon'><Link to={"/projects"}>
-                        <img className='action-icon' src={projectsIcon} alt="" />
+                        <img className='action-icon' src={projectsIcon} alt="projects" />
                     </Link></li>
                     <li id='contacts-icon'><Link to={"/contacts"}>
-                        <img className='action-icon' src={contactsIcon} alt="" />
+                        <img className='action-icon' src={contactsIcon} alt="contacts" />
                     </Link></li>
                 </ul>
 
